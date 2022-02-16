@@ -1,4 +1,4 @@
-
+import {getMovieByTitle} from "../../utils/api-utils"
 import { Box, Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material'
 const MovieList = (props) => {
     return (
@@ -13,6 +13,7 @@ const MovieList = (props) => {
 
 export async function getStaticProps() {
     
+    const fetchedMovies = await getMovieByTitle('Thor')
 }
 
 export default MovieList
