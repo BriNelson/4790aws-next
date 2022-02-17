@@ -1,19 +1,25 @@
-import {getMovieByTitle} from "../../utils/api-utils"
-import { Box, Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material'
-const MovieList = (props) => {
-    return (
-        <>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <p>movie data goes here</p>
-{/* omdb key  */}
-            </Box>
-            </>
-    )
-}
+// import {getMovieByTitle} from "../../utils/api-utils"
+// import { Box, Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material'
+// const MovieList = (props) => {
+//     return (
+//         <>
+//             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+//                 <p>movie data goes here</p>
+// {/* omdb key  */}
+//             </Box>
+//             </>
+//     )
+// }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
     
-    const fetchedMovies = await getMovieByTitle('Thor')
-}
+//     const fetchedMovies = await getMovieByTitle('Thor')
 
-export default MovieList
+//     return {
+//         props: { 
+//             movie: fetchedMovies
+//         }
+//     }
+// }
+
+// export default MovieList
