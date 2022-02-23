@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ResponsiveAppBar from "../../components/appBar";
+import {ResponsiveAppBar} from "../../components/appBar";
 
 function HomePage(props) {
   return (
