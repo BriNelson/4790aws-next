@@ -1,10 +1,11 @@
 import {getMovieByTitle} from "../../utils/api-utils"
 import { Box } from '@mui/material'
 const MovieList = (props) => {
+    const {movie} = props
     return (
         <>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <p>movie data goes here</p>
+                <p>{movie.title}</p>
 {/* omdb key  */}
             </Box>
             </>
