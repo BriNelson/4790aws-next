@@ -5,8 +5,9 @@ const MovieList = (props) => {
     return (
         <>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <p>{movie.title}</p>
-{/* omdb key  */}
+                <p>{movie.Title}</p>
+                <p></p>
+
             </Box>
             </>
     )
@@ -14,7 +15,7 @@ const MovieList = (props) => {
 
 export async function getStaticProps() {
     
-    const fetchedMovies = await getMovieByTitle('Thor')
+    const fetchedMovies = await getMovieByTitle('Speed Racer')
 
     return {
         props: { 
