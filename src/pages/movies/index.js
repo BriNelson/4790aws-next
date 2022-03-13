@@ -38,13 +38,19 @@ const MovieList = (props) => {
 };
 
 export async function getStaticProps() {
-  const fetchedMovies = await getMovieByTitle("Speed Racer");
+ 
+ 
+ 
+ 
+ 
+ 
+  // const fetchedMovies = await getMovieByTitle("Speed Racer");
 
-  return {
-    props: {
-      movie: fetchedMovies,
-    },
-  };
+  // return {
+  //   props: {
+  //     movie: fetchedMovies,
+  //   },
+  // };
 }
 
 export default MovieList;
