@@ -10,11 +10,11 @@ type MoviesDBMetaData = {
 
 export declare class MoviesDB {
   readonly id: string;
-  readonly title?: string;
-  readonly director?: string;
-  readonly runtime?: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
+  readonly title?: string | null;
+  readonly director?: string | null;
+  readonly runtime?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
   constructor(init: ModelInit<MoviesDB, MoviesDBMetaData>);
   static copyOf(source: MoviesDB, mutator: (draft: MutableModel<MoviesDB, MoviesDBMetaData>) => MutableModel<MoviesDB, MoviesDBMetaData> | void): MoviesDB;
 }

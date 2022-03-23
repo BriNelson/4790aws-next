@@ -8,14 +8,19 @@ import {
   CardContent,
   Typography,
   CardActions,
+  TextField
 } from "@mui/material";
 const MovieList = (props) => {
   const { movie } = props;
   return (
       <>
-          <ResponsiveAppBar/>
+      <ResponsiveAppBar />
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <TextField sx={{ m: 3, width: 600  }}id="filled" label="Search" variant="outlined" />
+        </Box>
           
       <Box sx={{ display: "flex", justifyContent: "center" }}>
+      
         <Card sx={{ maxWidth: 300 }}>
                   <CardMedia component="img" title={movie.Title} image={movie.Poster} />
                   <Box>
