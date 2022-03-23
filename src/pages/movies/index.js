@@ -1,4 +1,5 @@
 import { getMovieByTitle } from "../../utils/api-utils";
+import Amplify, {Datastore} from "aws-amplify" 
 import ResponsiveAppBar  from "../../components/ResponsiveAppBar.js";
 import {
   Box,
