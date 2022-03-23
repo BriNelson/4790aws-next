@@ -6,7 +6,7 @@ function HomePage(props) {
     <div>
       <Head><title>movie app</title></Head>
       <main>
-        {/* <ResponsiveAppBar/> */}
+        <ResponsiveAppBar/>
         <h1>Movie app</h1>
 </main>
 

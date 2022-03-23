@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Amplify, { DataStore } from "aws-amplify"
 import useSWR from "swr"
 import {moviesDB} from "../../models"
@@ -14,7 +15,7 @@ import {
 } from "@mui/material";
 
 //Delete movie list Feb24 video 43ish
-Amplify.configure(config)
+// Amplify.configure(config)
 const MovieList = () => {
   const [movieList, setMovieList] = React.useState()
   
@@ -40,13 +41,13 @@ const MovieList = () => {
 
   const { data, error } = useSWR('/movies', fetcher.apply,{ refreshInterval:500 })
   
-  if (error) return <div> failed</div>
-  if (!data) return <div>Loading</div>
+  // if (error) return <div> failed</div>
+  // if (!data) return <div>Loading</div>
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Card sx={{ maxWidth: 300 }}>
-                  <CardMedia component="img" title={movie.Title} image={movie.Poster} />
+                  {/* <CardMedia component="img" title={movie.Title} image={movie.Poster} />
                   <Box>
           <CardContent>
             <Typography variant="h5" color="initial">
@@ -63,7 +64,7 @@ const MovieList = () => {
               {movie.Plot}
             </Typography>
                       </CardContent>
-                      </Box>
+                      </Box> */}
         </Card>
       </Box>
     </>
