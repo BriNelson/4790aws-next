@@ -10,8 +10,10 @@ import {
   CardContent,
   Typography,
   CardActions,
+  dividerClasses,
 } from "@mui/material";
 
+//Delete movie list Feb24 video 43ish
 Amplify.configure(config)
 const MovieList = () => {
   const [movieList, setMovieList] = React.useState()
@@ -36,7 +38,10 @@ const MovieList = () => {
     return movieList
 }
 
-  const {data, error} = useSWR('/movies', fetcher)
+  const { data, error } = useSWR('/movies', fetcher.apply,{ refreshInterval:500 })
+  
+  if (error) return <div> failed</div>
+  if (!data) return <div>Loading</div>
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
