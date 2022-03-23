@@ -1,4 +1,5 @@
 import { getMovieByTitle } from "../../utils/api-utils";
+import ResponsiveAppBar  from "../../components/ResponsiveAppBar.js";
 import {
   Box,
   Card,
@@ -10,7 +11,9 @@ import {
 const MovieList = (props) => {
   const { movie } = props;
   return (
-    <>
+      <>
+          <ResponsiveAppBar/>
+          
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Card sx={{ maxWidth: 300 }}>
                   <CardMedia component="img" title={movie.Title} image={movie.Poster} />
