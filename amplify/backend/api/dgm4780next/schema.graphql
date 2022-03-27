@@ -3,4 +3,7 @@ type MoviesDB @model @auth(rules: [{allow: public}]) {
   title: String
   director: String
   runtime: String
+  poster: String
+  Rating: String
 }
+ 
