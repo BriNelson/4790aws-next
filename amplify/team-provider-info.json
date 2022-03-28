@@ -10,6 +10,11 @@
       "StackName": "amplify-dgm4780next-staging-215136",
       "StackId": "arn:aws:cloudformation:us-west-1:973849107936:stack/amplify-dgm4780next-staging-215136/f6c200f0-82df-11ec-bdd0-06e3693e81f5",
       "AmplifyAppId": "d2zt8svcstosf3"
+    },
+    "categories": {
+      "auth": {
+        "dgm4780nexta5a9533f": {}
+      }
     }
   }
 }

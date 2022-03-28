@@ -3,7 +3,7 @@ import config from "../../aws-exports"
 import SearchDialogue from '../../components/SearchDialogue';
 import { getMovieByTitle } from "../../utils/api-utils";
 import Amplify, { DataStore } from "aws-amplify" 
-import useSwr from "swr"
+import useSWR from "swr"
 import {MoviesDB} from "../../models"
 import ResponsiveAppBar  from "../../components/ResponsiveAppBar.js";
 import {
@@ -19,7 +19,8 @@ import {
 
 Amplify.configure(config)
 
-const MovieList = (props) => {
+const MovieList = () => {
+  const [movieList, setMovieList] = useState({});
   const [movie, setFetchedMovie] = React.useState({})
   const [movieInput, setMovieInput] = useState('');
   const [dialog, setDialog] = useState({
@@ -54,45 +55,74 @@ const MovieList = (props) => {
         //55 minutes in 
       )
       console.log("this worked")
-    } catch (error) {("save movie error", err)}
-    console
+    } catch (error) { ("save movie error", err) }
+    finally {
+      setDialog({ isOpen: false})
+    }
+    
   }
 
   const handleCloseDialog = () => {
-    setDialog({ isOpen:false})
+    setDialog({ isOpen: false })
+    
   }
+
+  const fetcher = async () => {
+    try {
+      let movieTempList = await DataStore.query(MoviesDB)
+      setMovieList(movieTempList)
+
+      console.log(movieList)
+    } catch (error) {
+      console.log('fetcher error', error)
+      
+      
+    }
+    return movieList
+  }
+
+  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 500})
+  
   // const { movie } = props;
+  if (error) return <p>failed</p>
+  if (!data) return <p>loading</p>
   return (
       <>
       <ResponsiveAppBar />
-      <Box sx={{ display: "flex", justifyContent: "center",  m: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", m: 3 }}>
+        
         <TextField sx={{width: 600, backgroundColor: "white"}}  value={movieInput}
           onChange={(e) => setMovieInput(e.target.value)} id="filled" label="Search" variant="outlined" />
         <Button variant="contained"  onClick={handleSearch}>Search</Button>
         </Box>
           
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-      
-        <Card sx={{ maxWidth: 300 }}>
-                  <CardMedia component="img" title={movie.Title} image={movie.Poster} />
+      <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
+      {movieList && movieList.map((movies) => (   
+        <Card sx={{ maxWidth: 300, m:2}}>
+                  <CardMedia component="img" title={movies.title} image={movies.poster} />
                   <Box>
           <CardContent>
             <Typography variant="h5" color="initial">
-              {movie.Title}
+              {movies.title}
             </Typography>
             <Typography variant="subtitle1" color="initial">
-              {movie.Rated}
+              {movies.Rating}
             </Typography>
             <Typography variant="subtitle2" color="initial">
-              {movie.Director}
+              {movies.director}
             </Typography>
 
             <Typography variant="body1" color="initial">
               
             </Typography>
-                      </CardContent>
+            </CardContent>
+            <CardActions>
+                            <Button>delete</Button> 
+                            
+                        </CardActions>
                       </Box>
         </Card>
+        ))}
       </Box>
       <SearchDialogue open={dialog.isOpen} movie={movie} save={handleSave} />
     </>

@@ -21,7 +21,7 @@ const SearchDialogue = (props) => {
         <Dialog maxWidth="sm" open={open}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
       
-      <Card sx={{ maxWidth: 300 }}>
+      <Card sx={{ maxWidth: 300, m:2}}>
                 <CardMedia component="img" title={movie.Title} image={movie.Poster} />
                 <Box>
         <CardContent>
