@@ -5,7 +5,7 @@ import { getMovieByTitle } from "../../utils/api-utils";
 import Amplify, { DataStore } from "aws-amplify" 
 import useSWR from "swr"
 import {MoviesDB} from "../../models"
-import ResponsiveAppBar  from "../../components/ResponsiveAppBar.js";
+
 import {
   Box,
   Card,
@@ -81,14 +81,14 @@ const MovieList = () => {
     return movieList
   }
 
-  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 500})
+  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 100000})
   
   // const { movie } = props;
   if (error) return <p>failed</p>
   if (!data) return <p>loading</p>
   return (
       <>
-      <ResponsiveAppBar />
+      
       <Box sx={{ display: "flex", justifyContent: "center", m: 3 }}>
         
         <TextField sx={{width: 600, backgroundColor: "white"}}  value={movieInput}
