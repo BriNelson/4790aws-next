@@ -26,8 +26,19 @@ const MovieList = () => {
   const [dialog, setDialog] = useState({
     isOpen: false,
     movie: undefined,
+    
 });
 
+  const formFields = {
+    signUp: {
+      email: {},
+      name: {},
+      family_name: {},
+      passwords: {},
+      
+  
+    }
+  }
   // 
   //42 mins to finsih save dialogue 
   // handle save movie 51:47
