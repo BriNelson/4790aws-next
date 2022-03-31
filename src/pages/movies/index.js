@@ -8,6 +8,7 @@ import {MoviesDB} from "../../models"
 
 import {
   Box,
+  CircularProgress,
   Card,
   CardMedia,
   CardContent,
@@ -29,16 +30,7 @@ const MovieList = () => {
     
 });
 
-  const formFields = {
-    signUp: {
-      email: {},
-      name: {},
-      family_name: {},
-      passwords: {},
-      
   
-    }
-  }
   // 
   //42 mins to finsih save dialogue 
   // handle save movie 51:47
@@ -96,7 +88,7 @@ const MovieList = () => {
   
   // const { movie } = props;
   if (error) return <p>failed</p>
-  if (!data) return <p>loading</p>
+  if (!data) return <CircularProgress />
   return (
       <>
       
