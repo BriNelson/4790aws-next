@@ -17,6 +17,7 @@ import {
 
 const SearchDialogue = (props) => {
   const { open, movie, save } = props;
+  console.log(movie[0])
     return (
         <Dialog maxWidth="sm" open={open}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>

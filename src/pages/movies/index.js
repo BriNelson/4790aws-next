@@ -38,7 +38,7 @@ const MovieList = () => {
   const handleSearch = async () => {
     const returnedMovie = await getMovieByTitle(movieInput)
     setFetchedMovie(returnedMovie)
-    console.log(returnedMovie)
+    console.log(returnedMovie.title_results)
     setDialog({ isOpen:true, movie: movie })
   }
 
