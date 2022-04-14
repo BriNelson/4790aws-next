@@ -31,9 +31,7 @@ const MovieList = () => {
 });
 
   
-  // 
-  //42 mins to finsih save dialogue 
-  // handle save movie 51:47
+  
   
   const handleSearch = async () => {
     const returnedMovie = await getMovieByTitle(movieInput)
@@ -54,8 +52,7 @@ const MovieList = () => {
 
         }
         )
-
-        //55 minutes in 
+ 
       )
       console.log("this worked")
     } catch (error) { ("save movie error", err) }
@@ -63,6 +60,17 @@ const MovieList = () => {
       setDialog({ isOpen: false})
     }
     
+  }
+
+  const deleteMovie = async (movie) => {
+    try {
+      const movieToDelete = await DataStore.query(MoviesDB, movie.id)
+      await DataStore.delete(movieToDelete)
+    } catch (error) {
+      console.log(
+        "delete error"
+      )
+    }
   }
 
   const handleCloseDialog = () => {
@@ -84,7 +92,7 @@ const MovieList = () => {
     return movieList
   }
 
-  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 100000})
+  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 300})
   
   // const { movie } = props;
   if (error) return <p>failed</p>
@@ -120,7 +128,7 @@ const MovieList = () => {
             </Typography>
             </CardContent>
             <CardActions>
-                            <Button>delete</Button> 
+                            <Button onClick={() => deleteMovie(movies)}>delete</Button> 
                             
                         </CardActions>
                       </Box>
