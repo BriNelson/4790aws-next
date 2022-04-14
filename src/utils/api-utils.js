@@ -1,5 +1,5 @@
 export async function getMovieByTitle(title) {
-    const response = await fetch(`https://api.watchmode.com/v1/search/?apiKey=PuUQcHotZnAXXYNAbwGxPfwLVS81iC7tfeV3s9Wv&search_field=name&search_value=${title}`)
+    const response = await fetch(`https://www.omdbapi.com/?apikey=17669979&t=${title}&plot=full`)
 return await response.json()
     
 }
