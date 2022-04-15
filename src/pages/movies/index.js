@@ -22,7 +22,7 @@ Amplify.configure(config)
 
 const MovieList = () => {
   const [movieList, setMovieList] = useState({});
-  const [movie, setFetchedMovie] = React.useState({})
+  const [movie, setFetchedMovie] = React.useState([])
   const [movieInput, setMovieInput] = useState('');
   const [dialog, setDialog] = useState({
     isOpen: false,
@@ -37,8 +37,8 @@ const MovieList = () => {
   
   const handleSearch = async () => {
     const returnedMovie = await getMovieByTitle(movieInput)
-    setFetchedMovie(returnedMovie)
-    console.log(returnedMovie.title_results)
+    setFetchedMovie(returnedMovie.results)
+    console.log(returnedMovie.results)
     setDialog({ isOpen:true, movie: movie })
   }
 
