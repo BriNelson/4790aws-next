@@ -42,28 +42,28 @@ const MovieList = () => {
     setDialog({ isOpen:true, movie: movie })
   }
 
-  const handleSave = async () => {
-    try {
-      await DataStore.save(
-        new MoviesDB({
-          title: movie.Title,
-          director: movie.Director,
-          runtime: movie.Runtime,
-          poster: movie.Poster,
-          Rating: movie.Rated
+  // const handleSave = async () => {
+  //   try {
+  //     await DataStore.save(
+  //       new MoviesDB({
+  //         title: movie.Title,
+  //         director: movie.Director,
+  //         runtime: movie.Runtime,
+  //         poster: movie.Poster,
+  //         Rating: movie.Rated
 
-        }
-        )
+  //       }
+  //       )
 
-        //55 minutes in 
-      )
-      console.log("this worked")
-    } catch (error) { ("save movie error", err) }
-    finally {
-      setDialog({ isOpen: false})
-    }
+  //       //55 minutes in 
+  //     )
+  //     console.log("this worked")
+  //   } catch (error) { ("save movie error", err) }
+  //   finally {
+  //     setDialog({ isOpen: false})
+  //   }
     
-  }
+  // }
 
   const handleCloseDialog = () => {
     setDialog({ isOpen: false })
@@ -127,7 +127,7 @@ const MovieList = () => {
         </Card>
         ))}
       </Box>
-      <SearchDialogue open={dialog.isOpen} movie={movie} save={handleSave} />
+      <SearchDialogue open={dialog.isOpen} movie={movie}  />
     </>
   );
 };

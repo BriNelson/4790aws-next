@@ -1,5 +1,9 @@
 
+
+import Amplify, { DataStore } from "aws-amplify" 
+import {MoviesDB} from "../models"
 import React from 'react';
+import config from "../aws-exports"
 import {
     Box,
     Card,
@@ -13,49 +17,67 @@ import {
 } from "@mui/material"
 
     
+Amplify.configure(config)
 
 
 const SearchDialogue = (props) => {
-  const { open, movie, save } = props;
+
+  const { open, movie } = props;
+  
+
+ 
+  
+  const handleSave = async (index) => {
+    try {
+      await DataStore.save(
+
+        new MoviesDB({
+          title: movie[index].name,
+         
+
+        }
+        )
+
+        //55 minutes in 
+      )
+      console.log("this worked")
+    } catch (error) { ("save movie error", error) }
+    finally {
+
+      
+      
+      console.log(open)
+    }
+    
+  }
+
+
+  
   
   return (
-      <>
-      <Dialog maxWidth="sm" open={open}>
-        
-        {movie && movie.map((movies) => (
+     
+      <Dialog scroll='paper' open={open}>
+        <Box>
+      {movie && movie.map((movies, index) => (
+        <Card sx={{ maxWidth: 500, m: 2, display: 'flex' }}>
+          <CardMedia sx={{ maxWidth: 100, display: 'flex' }} component="img" image={movies.image_url} />
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <CardContent sx={{marginBottom: 'auto'}}>
+            <Typography variant="h5" color="initial">  {movies.name}</Typography>
+          </CardContent>
+          <CardActions sx={{marginTop: 'auto'}}>
+               <Button onClick={() => handleSave(index)}>Save</Button> 
+            </CardActions>
+            </Box>
+        </Card>
             
-          <p> {movies.name}</p>
-          <img src={movies.image_url}>
+            ))}
           
-      // <Card sx={{ maxWidth: 300, m:2}}>
-      //           {/* <CardMedia component="img" title={movies.name} image={movies.image_url} /> */}
-      //           <Box>
-      //         <CardContent>
-                
-      //     <Typography variant="h5" color="initial">
-      //       {movies.name}
-      //     </Typography>
-      //     <Typography variant="subtitle1" color="initial">
-      //       {movies.type}
-      //     </Typography>
-      //     <Typography variant="subtitle2" color="initial">
-           
-      //     </Typography>
-
-      //     <Typography variant="body1" color="initial">
-            
-      //     </Typography>
-      //                   </CardContent>
-      //                   <CardActions>
-      //                       <Button onClick={save}>save</Button>
-                            
-      //                   </CardActions>
-      //               </Box>
-      // </Card>
+          </Box>
    
-   ))}
+   
      </Dialog>
-          </>
+          
     );
 }
 
