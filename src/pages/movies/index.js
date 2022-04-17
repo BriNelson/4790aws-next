@@ -66,6 +66,7 @@ const MovieList = () => {
   // }
 
   const handleCloseDialog = () => {
+    console.log('does this work')
     setDialog({ isOpen: false })
     
   }
@@ -84,7 +85,7 @@ const MovieList = () => {
     return movieList
   }
 
-  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 100000})
+  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 300})
   
   // const { movie } = props;
   if (error) return <p>failed</p>
@@ -127,7 +128,7 @@ const MovieList = () => {
         </Card>
         ))}
       </Box>
-      <SearchDialogue open={dialog.isOpen} movie={movie}  />
+      <SearchDialogue open={dialog.isOpen} movie={movie} closeDialog={handleCloseDialog}  />
     </>
   );
 };
