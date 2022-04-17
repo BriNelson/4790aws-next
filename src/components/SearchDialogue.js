@@ -22,34 +22,32 @@ Amplify.configure(config)
 
 const SearchDialogue = (props) => {
 
-  const { open, movie } = props;
+  const { open, movie, closeDialog } = props;
   
 
  
   
   const handleSave = async (index) => {
+
+
+    
     try {
       await DataStore.save(
-
         new MoviesDB({
           title: movie[index].name,
-         
+        })
 
-        }
-        )
+       
+      );
+      console.log("this worked");
+    } catch (error) {
+      "save movie error", error;
+    } finally {
+      closeDialog();
 
-        //55 minutes in 
-      )
-      console.log("this worked")
-    } catch (error) { ("save movie error", error) }
-    finally {
-
-      
-      
-      console.log(open)
+      console.log(open);
     }
-    
-  }
+  };
 
 
   
