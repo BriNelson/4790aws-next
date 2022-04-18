@@ -24,17 +24,22 @@ const SearchDialogue = (props) => {
 
   const { open, movie, closeDialog } = props;
   
-
+  async function getMovieById(id) {
+    const response = await fetch(`https://api.watchmode.com/v1/title/${id}/sources/?apiKey=PuUQcHotZnAXXYNAbwGxPfwLVS81iC7tfeV3s9Wv`)
+return await response.json()
+    
+}
  
   
   const handleSave = async (index) => {
 
-
-    
+   const movieInfo = await getMovieById(movie[index].id)
+console.log(movieInfo)
     try {
       await DataStore.save(
         new MoviesDB({
           title: movie[index].name,
+          director: movie[index].director
         })
 
        
