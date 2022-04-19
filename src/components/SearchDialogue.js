@@ -25,7 +25,7 @@ const SearchDialogue = (props) => {
   const { open, movie, closeDialog } = props;
   
   async function getMovieById(id) {
-    const response = await fetch(`https://api.watchmode.com/v1/title/${id}/sources/?apiKey=PuUQcHotZnAXXYNAbwGxPfwLVS81iC7tfeV3s9Wv`)
+    const response = await fetch(`https://api.watchmode.com/v1/title/${id}/details/?apiKey=PuUQcHotZnAXXYNAbwGxPfwLVS81iC7tfeV3s9Wv&append_to_response=sources`)
 return await response.json()
     
 }
