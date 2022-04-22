@@ -39,7 +39,17 @@ console.log(movieInfo)
       await DataStore.save(
         new MoviesDB({
           title: movie[index].name,
-          director: movie[index].director
+          director: movie[index].director,
+          poster: movie[index].image_url,
+          us_rating: movieInfo.us_rating,
+          trailer: movieInfo.trailer,
+          trailer_thumbnail: movieInfo.trailer_thumbnail,
+          backdrop: movieInfo.backdrop,
+          plot_overview: movieInfo.plot_overview,
+          
+          
+
+
         })
 
        
@@ -48,8 +58,9 @@ console.log(movieInfo)
     } catch (error) {
       "save movie error", error;
     } finally {
+      
       closeDialog();
-
+      
       console.log(open);
     }
   };
@@ -66,7 +77,7 @@ console.log(movieInfo)
           <CardMedia sx={{ maxWidth: 100, display: 'flex' }} component="img" image={movies.image_url} />
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <CardContent sx={{marginBottom: 'auto'}}>
-              <Typography variant="h5" color="initial">  {movies.name}{movies.image_url}</Typography>
+              <Typography variant="h5" color="initial">  {movies.name}</Typography>
           </CardContent>
           <CardActions sx={{marginTop: 'auto'}}>
                <Button onClick={() => handleSave(index)}>Save</Button> 
