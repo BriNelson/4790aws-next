@@ -39,13 +39,13 @@ console.log(movieInfo)
       await DataStore.save(
         new MoviesDB({
           title: movie[index].name,
-          director: movie[index].director,
-          poster: movie[index].image_url,
-          us_rating: movieInfo.us_rating,
-          trailer: movieInfo.trailer,
-          trailer_thumbnail: movieInfo.trailer_thumbnail,
-          backdrop: movieInfo.backdrop,
-          plot_overview: movieInfo.plot_overview,
+          // director: movie[index].director,
+          // poster: movie[index].image_url,
+          // us_rating: movieInfo.us_rating,
+          // trailer: movieInfo.trailer,
+          // trailer_thumbnail: movieInfo.trailer_thumbnail,
+          // backdrop: movieInfo.backdrop,
+          // plot_overview: movieInfo.plot_overview,
           
           
 
