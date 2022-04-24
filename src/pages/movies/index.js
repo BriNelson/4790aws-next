@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from "../../aws-exports"
 import SearchDialogue from '../../components/SearchDialogue';
-import { getMovieByTitle } from "../../utils/api-utils";
+
 import Amplify, { DataStore } from "aws-amplify" 
 import useSWR from "swr"
 import {MoviesDB} from "../../models"
@@ -22,7 +22,7 @@ Amplify.configure(config)
 
 const MovieList = () => {
   const [movieList, setMovieList] = useState({});
-  const [movie, setFetchedMovie] = React.useState([])
+  const [fetchedMovie, setFetchedMovie] = React.useState([])
   const [movieInput, setMovieInput] = useState('');
   const [dialog, setDialog] = useState({
     isOpen: false,
@@ -53,19 +53,22 @@ const MovieList = () => {
   
   const handleSearch = async () => {
     if (!movieInput) return
-    const watchmodeMovie = await fetch('/api/movieId', {
+    const watchmodeMovie = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({ title: movieInput }),
       headers: {
         'Content-Type': 'application/json',
       },
     })
-
-    setFetchedMovie(await watchmodeMovie.json())
+const test = await watchmodeMovie.json()
+    console.log(test.results)
+    setFetchedMovie(test.results)
+     //setFetchedMovie(await watchmodeMovie.json())
 
     setDialog({
       isOpen: true,
-      movie: movie,
+      movie: test.results
+      
     })
   } 
 
@@ -158,7 +161,7 @@ const MovieList = () => {
         </Card>
         ))}
       </Box>
-      <SearchDialogue open={dialog.isOpen} movie={movie} closeDialog={handleCloseDialog}  />
+      <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
     </>
   );
 };

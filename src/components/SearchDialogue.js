@@ -34,7 +34,7 @@ return await response.json()
   const handleSave = async (index) => {
 
    const movieInfo = await getMovieById(movie[index].id)
-    console.log(movieInfo.sources)
+    
     const sourcesArray = movieInfo.sources.map(test => test.name)
 console.log(sourcesArray)
     try {
