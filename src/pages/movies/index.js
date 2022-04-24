@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from "../../aws-exports"
 import SearchDialogue from '../../components/SearchDialogue';
-import { getMovieByTitle } from "../../utils/api-utils";
+
 import Amplify, { DataStore } from "aws-amplify" 
 import useSWR from "swr"
 import {MoviesDB} from "../../models"
@@ -22,7 +22,7 @@ Amplify.configure(config)
 
 const MovieList = () => {
   const [movieList, setMovieList] = useState({});
-  const [movie, setFetchedMovie] = React.useState({})
+  const [fetchedMovie, setFetchedMovie] = React.useState([])
   const [movieInput, setMovieInput] = useState('');
   const [dialog, setDialog] = useState({
     isOpen: false,
@@ -33,34 +33,68 @@ const MovieList = () => {
   
   
   
-  const handleSearch = async () => {
-    const returnedMovie = await getMovieByTitle(movieInput)
-    setFetchedMovie(returnedMovie)
-    console.log(returnedMovie)
-    setDialog({ isOpen:true, movie: movie })
-  }
-
-  const handleSave = async () => {
-    try {
-      await DataStore.save(
-        new MoviesDB({
-          title: movie.Title,
-          director: movie.Director,
-          runtime: movie.Runtime,
-          poster: movie.Poster,
-          Rating: movie.Rated
-
-        }
-        )
- 
-      )
-      console.log("this worked")
-    } catch (error) { ("save movie error", err) }
-    finally {
-      setDialog({ isOpen: false})
-    }
+  // const handleSearch = async () => {
+  //   if (!movieInput) return
     
-  }
+  //   const watchmodeMovie = await fetch('/api/movieId', {
+  //     method: 'POST',
+  //     body: JSON.stringify({ title: movieInput }),
+  //     headers: {
+  //       'Content-type': 'application/json'
+  //     }
+  //   })
+  // setFetchedMove(await watchmodeMovie.json())
+    
+  //   setDialog({ isOpen: true, movie: movie }),
+  // }
+  
+  
+  const handleSearch = async () => {
+    if (!movieInput) return
+    const watchmodeMovie = await fetch('/api/movie', {
+      method: 'POST',
+      body: JSON.stringify({ title: movieInput }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+const test = await watchmodeMovie.json()
+    console.log(test.results)
+    setFetchedMovie(test.results)
+     //setFetchedMovie(await watchmodeMovie.json())
+
+    setDialog({
+      isOpen: true,
+      movie: test.results
+      
+    })
+  } 
+
+
+
+  
+  // const handleSave = async () => {
+  //   try {
+  //     await DataStore.save(
+  //       new MoviesDB({
+  //         title: movie.Title,
+  //         director: movie.Director,
+  //         runtime: movie.Runtime,
+  //         poster: movie.Poster,
+  //         Rating: movie.Rated
+
+  //       }
+  //       )
+
+  //       //55 minutes in 
+  //     )
+  //     console.log("this worked")
+  //   } catch (error) { ("save movie error", err) }
+  //   finally {
+  //     setDialog({ isOpen: false})
+  //   }
+    
+  // }
 
   const deleteMovie = async (movie) => {
     try {
@@ -74,6 +108,7 @@ const MovieList = () => {
   }
 
   const handleCloseDialog = () => {
+    console.log('does this work')
     setDialog({ isOpen: false })
     
   }
@@ -109,7 +144,7 @@ const MovieList = () => {
           
       <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
       {movieList && movieList.map((movies) => (   
-        <Card sx={{ maxWidth: 300, m:2}}>
+        <Card sx={{ width: 200, m:2}}>
                   <CardMedia component="img" title={movies.title} image={movies.poster} />
                   <Box>
           <CardContent>
@@ -135,7 +170,7 @@ const MovieList = () => {
         </Card>
         ))}
       </Box>
-      <SearchDialogue open={dialog.isOpen} movie={movie} save={handleSave} />
+      <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
     </>
   );
 };

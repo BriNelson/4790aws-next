@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "dgm4780next",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-cbac32fd-9a10-4591-bbdc-523c87a910d4/amplify/backend/api/dgm4780next/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-41f78723-c7bf-4b08-b512-11674aaad0e8/amplify/backend/api/dgm4780next/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
