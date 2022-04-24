@@ -1,72 +1,176 @@
-import * as React from 'react';
-import Amplify, { DataStore } from "aws-amplify"
-import useSWR from "swr"
-import {moviesDB} from "../../models"
+import React, { useState } from 'react';
 import config from "../../aws-exports"
-import { getMovieByTitle } from "../../utils/api-utils";
+import SearchDialogue from '../../components/SearchDialogue';
+
+import Amplify, { DataStore } from "aws-amplify" 
+import useSWR from "swr"
+import {MoviesDB} from "../../models"
+
 import {
   Box,
+  CircularProgress,
   Card,
   CardMedia,
   CardContent,
   Typography,
   CardActions,
-  dividerClasses,
+  TextField,
+  Button
 } from "@mui/material";
 
-//Delete movie list Feb24 video 43ish
-// Amplify.configure(config)
+Amplify.configure(config)
+
 const MovieList = () => {
-  const [movieList, setMovieList] = React.useState()
-  
-  const handleDelete = async (movie) => {
-    try {
-      const movieToDelete = await DataStore.query(moviesDB, movie.id)
+  const [movieList, setMovieList] = useState({});
+  const [fetchedMovie, setFetchedMovie] = React.useState([])
+  const [movieInput, setMovieInput] = useState('');
+  const [dialog, setDialog] = useState({
+    isOpen: false,
+    movie: undefined,
     
+});
+
+  
+  
+  
+  // const handleSearch = async () => {
+  //   if (!movieInput) return
+    
+  //   const watchmodeMovie = await fetch('/api/movieId', {
+  //     method: 'POST',
+  //     body: JSON.stringify({ title: movieInput }),
+  //     headers: {
+  //       'Content-type': 'application/json'
+  //     }
+  //   })
+  // setFetchedMove(await watchmodeMovie.json())
+    
+  //   setDialog({ isOpen: true, movie: movie }),
+  // }
+  
+  
+  const handleSearch = async () => {
+    if (!movieInput) return
+    const watchmodeMovie = await fetch('/api/movie', {
+      method: 'POST',
+      body: JSON.stringify({ title: movieInput }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+const test = await watchmodeMovie.json()
+    console.log(test.results)
+    setFetchedMovie(test.results)
+     //setFetchedMovie(await watchmodeMovie.json())
+
+    setDialog({
+      isOpen: true,
+      movie: test.results
+      
+    })
+  } 
+
+
+
+  
+  // const handleSave = async () => {
+  //   try {
+  //     await DataStore.save(
+  //       new MoviesDB({
+  //         title: movie.Title,
+  //         director: movie.Director,
+  //         runtime: movie.Runtime,
+  //         poster: movie.Poster,
+  //         Rating: movie.Rated
+
+  //       }
+  //       )
+
+  //       //55 minutes in 
+  //     )
+  //     console.log("this worked")
+  //   } catch (error) { ("save movie error", err) }
+  //   finally {
+  //     setDialog({ isOpen: false})
+  //   }
+    
+  // }
+
+  const deleteMovie = async (movie) => {
+    try {
+      const movieToDelete = await DataStore.query(MoviesDB, movie.id)
       await DataStore.delete(movieToDelete)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.log(
+        "delete error"
+      )
     }
+  }
+
+  const handleCloseDialog = () => {
+    console.log('does this work')
+    setDialog({ isOpen: false })
+    
   }
 
   const fetcher = async () => {
     try {
-      let tempList = await DataStore.query(moviesDB)
-      setMovieList(tempList)
-    } catch (err){
-      console.log(err)
+      let movieTempList = await DataStore.query(MoviesDB)
+      setMovieList(movieTempList)
+
+      console.log(movieList)
+    } catch (error) {
+      console.log('fetcher error', error)
+      
+      
     }
     return movieList
-}
+  }
 
-  const { data, error } = useSWR('/movies', fetcher.apply,{ refreshInterval:500 })
+  const { data, error } = useSWR('/movies', fetcher, {refreshInterval: 300})
   
-  // if (error) return <div> failed</div>
-  // if (!data) return <div>Loading</div>
+  // const { movie } = props;
+  if (error) return <p>failed</p>
+  if (!data) return <CircularProgress />
   return (
-    <>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Card sx={{ maxWidth: 300 }}>
-                  {/* <CardMedia component="img" title={movie.Title} image={movie.Poster} />
+      <>
+      
+      <Box sx={{ display: "flex", justifyContent: "center", m: 3 }}>
+        
+        <TextField sx={{width: 600, backgroundColor: "white"}}  value={movieInput}
+          onChange={(e) => setMovieInput(e.target.value)} id="filled" label="Search" variant="outlined" />
+        <Button variant="contained"  onClick={handleSearch}>Search</Button>
+        </Box>
+          
+      <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
+      {movieList && movieList.map((movies) => (   
+        <Card sx={{ width: 200, m:2}}>
+                  <CardMedia component="img" title={movies.title} image={movies.poster} />
                   <Box>
           <CardContent>
             <Typography variant="h5" color="initial">
-              {movie.Title}
+              {movies.title}
             </Typography>
             <Typography variant="subtitle1" color="initial">
-              {movie.Rated}
+              {movies.Rating}
             </Typography>
             <Typography variant="subtitle2" color="initial">
-              {movie.Director}
+              {movies.director}
             </Typography>
 
             <Typography variant="body1" color="initial">
-              {movie.Plot}
+              
             </Typography>
-                      </CardContent>
-                      </Box> */}
+            </CardContent>
+            <CardActions>
+                            <Button onClick={() => deleteMovie(movies)}>delete</Button> 
+                            
+                        </CardActions>
+                      </Box>
         </Card>
+        ))}
       </Box>
+      <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
     </>
   );
 };
@@ -78,13 +182,13 @@ const MovieList = () => {
  
  
  
-//   // const fetchedMovies = await getMovieByTitle("Speed Racer");
+//   const fetchedMovies = await getMovieByTitle("Speed Racer");
 
-//   // return {
-//   //   props: {
-//   //     movie: fetchedMovies,
-//   //   },
-//   // };
+//   return {
+//     props: {
+//       movie: fetchedMovies,
+//     },
+//   };
 // }
 
 export default MovieList;
