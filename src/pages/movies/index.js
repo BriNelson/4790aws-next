@@ -35,13 +35,43 @@ const MovieList = () => {
   //42 mins to finsih save dialogue 
   // handle save movie 51:47
   
+  // const handleSearch = async () => {
+  //   if (!movieInput) return
+    
+  //   const watchmodeMovie = await fetch('/api/movieId', {
+  //     method: 'POST',
+  //     body: JSON.stringify({ title: movieInput }),
+  //     headers: {
+  //       'Content-type': 'application/json'
+  //     }
+  //   })
+  // setFetchedMove(await watchmodeMovie.json())
+    
+  //   setDialog({ isOpen: true, movie: movie }),
+  // }
+  
+  
   const handleSearch = async () => {
-    const returnedMovie = await getMovieByTitle(movieInput)
-    setFetchedMovie(returnedMovie.results)
-    console.log(returnedMovie.results)
-    setDialog({ isOpen:true, movie: movie })
-  }
+    if (!movieInput) return
+    const watchmodeMovie = await fetch('/api/movieId', {
+      method: 'POST',
+      body: JSON.stringify({ title: movieInput }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
+    setFetchedMovie(await watchmodeMovie.json())
+
+    setDialog({
+      isOpen: true,
+      movie: movie,
+    })
+  } 
+
+
+
+  
   // const handleSave = async () => {
   //   try {
   //     await DataStore.save(
