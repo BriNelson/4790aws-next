@@ -102,7 +102,7 @@ const MovieList = () => {
           
       <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
       {movieList && movieList.map((movies) => (   
-        <Card sx={{ maxWidth: 300, m:2}}>
+        <Card sx={{ width: 200, m:2}}>
                   <CardMedia component="img" title={movies.title} image={movies.poster} />
                   <Box>
           <CardContent>

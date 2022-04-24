@@ -34,22 +34,25 @@ return await response.json()
   const handleSave = async (index) => {
 
    const movieInfo = await getMovieById(movie[index].id)
-console.log(movieInfo)
+    console.log(movieInfo.sources)
+    const sourcesArray = movieInfo.sources.map(test => test.name)
+console.log(sourcesArray)
     try {
       await DataStore.save(
         new MoviesDB({
           title: movie[index].name,
-          // director: movie[index].director,
-          // poster: movie[index].image_url,
-          // us_rating: movieInfo.us_rating,
-          // trailer: movieInfo.trailer,
-          // trailer_thumbnail: movieInfo.trailer_thumbnail,
-          // backdrop: movieInfo.backdrop,
-          // plot_overview: movieInfo.plot_overview,
-          
-          
-
-
+           director: movie[index].director,
+           poster: movie[index].image_url,
+           us_rating: movieInfo.us_rating,
+           trailer: movieInfo.trailer,
+           trailer_thumbnail: movieInfo.trailer_thumbnail,
+           backdrop: movieInfo.backdrop,
+          plot_overview: movieInfo.plot_overview,
+          year: movieInfo.year,
+          runtime_minutes: movieInfo.runtime_minutes,
+          genre_names: movieInfo.genre_names,
+          sources: sourcesArray
+           
         })
 
        
