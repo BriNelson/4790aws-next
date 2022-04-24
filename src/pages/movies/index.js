@@ -12,10 +12,11 @@ import {
   Card,
   CardMedia,
   CardContent,
+  CardActionArea,
   Typography,
   CardActions,
   TextField,
-  Button
+  Button,
 } from "@mui/material";
 
 Amplify.configure(config)
@@ -133,7 +134,7 @@ const test = await watchmodeMovie.json()
   if (error) return <p>failed</p>
   if (!data) return <CircularProgress />
   return (
-      <>
+    <div>
       
       <Box sx={{ display: "flex", justifyContent: "center", m: 3 }}>
         
@@ -144,34 +145,35 @@ const test = await watchmodeMovie.json()
           
       <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
       {movieList && movieList.map((movies) => (   
-        <Card sx={{ width: 200, m:2}}>
-                  <CardMedia component="img" title={movies.title} image={movies.poster} />
-                  <Box>
+        <Card sx={{ width: 200, m: 2 }}>
+          <CardActionArea>
+            <CardMedia component="img" title={movies.title} image={movies.poster} />
+            
+                  
           <CardContent>
             <Typography variant="h5" color="initial">
               {movies.title}
             </Typography>
             <Typography variant="subtitle1" color="initial">
-              {movies.Rating}
+              {movies.us_rating}
             </Typography>
-            <Typography variant="subtitle2" color="initial">
-              {movies.director}
-            </Typography>
+           
 
             <Typography variant="body1" color="initial">
               
             </Typography>
-            </CardContent>
-            <CardActions>
+              </CardContent>
+              </CardActionArea>
+            <CardActions >
                             <Button onClick={() => deleteMovie(movies)}>delete</Button> 
                             
                         </CardActions>
-                      </Box>
+                      
         </Card>
         ))}
       </Box>
       <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
-    </>
+    </div>
   );
 };
 
