@@ -1,6 +1,17 @@
 type MoviesDB @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
+  poster: String
+  us_rating: String
+  trailer: String
+  trailer_thumbnail: String
+  backdrop: String
+  plot_overview: String
   director: String
-  runtime: String
+  year: Int
+  genre_names: [String]
+  critic_score: String
+  runtime_minutes: Int
+  sources: [String]
 }
+ 
