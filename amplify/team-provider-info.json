@@ -9,11 +9,28 @@
       "UnauthRoleName": "amplify-dgm4780next-staging-215136-unauthRole",
       "StackName": "amplify-dgm4780next-staging-215136",
       "StackId": "arn:aws:cloudformation:us-west-1:973849107936:stack/amplify-dgm4780next-staging-215136/f6c200f0-82df-11ec-bdd0-06e3693e81f5",
-      "AmplifyAppId": "d2zt8svcstosf3"
+      "AmplifyAppId": "d2zt8svcstosf3",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-dgm4780next-staging-215136-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "dgm4780nexta5a9533f": {}
+        "dgm4780nexta5a9533f": {},
+        "dgm4780next872ea8d5": {}
+      },
+      "function": {
+        "dgm4780next872ea8d5DefineAuthChallenge": {
+          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
+          "s3Key": "amplify-builds/dgm4780next872ea8d5DefineAuthChallenge-386b64436c2b51567566-build.zip"
+        },
+        "dgm4780next872ea8d5CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
+          "s3Key": "amplify-builds/dgm4780next872ea8d5CreateAuthChallenge-304972626833664c5258-build.zip"
+        },
+        "dgm4780next872ea8d5VerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "",
+          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
+          "s3Key": "amplify-builds/dgm4780next872ea8d5VerifyAuthChallengeResponse-363666324572654e5343-build.zip"
+        }
       }
     }
   }
