@@ -3,24 +3,18 @@
     "dgm4780next": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "apiKeyExpirationDate": "2022-05-26T05:30:18.665Z",
-              "description": "api key description"
+              "apiKeyExpirationDays": 7
             }
           },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
+          "additionalAuthenticationProviders": []
         }
-      },
-      "dependsOn": []
+      }
     }
   },
   "auth": {

@@ -4,8 +4,8 @@ import { schema } from './schema';
 
 
 
-const { MoviesDB } = initSchema(schema);
+const { Todo } = initSchema(schema);
 
 export {
-  MoviesDB
+  Todo
 };
