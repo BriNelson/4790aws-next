@@ -1,0 +1,8 @@
+type MoviesDB @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  poster: String
+  title: String
+  us_rating: String
+  untitledfield: String
+}
+ 

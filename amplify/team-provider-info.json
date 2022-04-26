@@ -1,36 +1,19 @@
 {
-  "staging": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-dgm4780next-staging-215136-authRole",
-      "UnauthRoleArn": "arn:aws:iam::973849107936:role/amplify-dgm4780next-staging-215136-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::973849107936:role/amplify-dgm4780next-staging-215136-authRole",
+      "AuthRoleName": "amplify-nextjscoursecode-dev-20823-authRole",
+      "UnauthRoleArn": "arn:aws:iam::973849107936:role/amplify-nextjscoursecode-dev-20823-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::973849107936:role/amplify-nextjscoursecode-dev-20823-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
-      "UnauthRoleName": "amplify-dgm4780next-staging-215136-unauthRole",
-      "StackName": "amplify-dgm4780next-staging-215136",
-      "StackId": "arn:aws:cloudformation:us-west-1:973849107936:stack/amplify-dgm4780next-staging-215136/f6c200f0-82df-11ec-bdd0-06e3693e81f5",
-      "AmplifyAppId": "d2zt8svcstosf3",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-dgm4780next-staging-215136-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "DeploymentBucketName": "amplify-nextjscoursecode-dev-20823-deployment",
+      "UnauthRoleName": "amplify-nextjscoursecode-dev-20823-unauthRole",
+      "StackName": "amplify-nextjscoursecode-dev-20823",
+      "StackId": "arn:aws:cloudformation:us-west-1:973849107936:stack/amplify-nextjscoursecode-dev-20823/0a564870-c538-11ec-b2be-02d8cf95045d",
+      "AmplifyAppId": "df9kdfj6gcbdl"
     },
     "categories": {
       "auth": {
-        "dgm4780nexta5a9533f": {},
-        "dgm4780nextdcf84b04": {}
-      },
-      "function": {
-        "dgm4780next872ea8d5DefineAuthChallenge": {
-          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
-          "s3Key": "amplify-builds/dgm4780next872ea8d5DefineAuthChallenge-386b64436c2b51567566-build.zip"
-        },
-        "dgm4780next872ea8d5CreateAuthChallenge": {
-          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
-          "s3Key": "amplify-builds/dgm4780next872ea8d5CreateAuthChallenge-304972626833664c5258-build.zip"
-        },
-        "dgm4780next872ea8d5VerifyAuthChallengeResponse": {
-          "RECAPTCHASECRET": "",
-          "deploymentBucketName": "amplify-dgm4780next-staging-215136-deployment",
-          "s3Key": "amplify-builds/dgm4780next872ea8d5VerifyAuthChallengeResponse-363666324572654e5343-build.zip"
-        }
+        "nextjscoursecodecfffa639": {}
       }
     }
   }
