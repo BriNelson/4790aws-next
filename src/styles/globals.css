@@ -44,8 +44,8 @@ body {
   --size-40: 10rem;
 
   margin: 0;
-  background-color: var(--color-grey-50);
-  color: #252525;
+  background-color: var(--color-grey-900);
+  color: #fff;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -53,6 +53,8 @@ h1,
 h2,
 h3 {
   font-family: 'Oswald', 'Roboto', sans-serif;
+  color: #fff;
+
 }
 
 a {

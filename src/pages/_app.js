@@ -5,6 +5,14 @@ import config from '../aws-exports'
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css'
 import '../styles/globals.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 
 Amplify.configure(config)
 const formFields = {
@@ -33,9 +41,11 @@ const formFields = {
 function MyApp({ Component, pageProps }) {
   return (
     
-    
+    <ThemeProvider theme={darkTheme}>
     <Authenticator formFields={formFields}>
+      
       {({ signOut, user }) => (
+         
     <div>
       {/* 17.54 find passing the logout props */}
   
@@ -46,7 +56,9 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       </div>
       )}
+      
       </Authenticator>
+      </ThemeProvider>
   );
 }
 
