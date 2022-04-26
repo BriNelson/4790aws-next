@@ -9,7 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
-              "apiKeyExpirationDate": "2022-05-26T04:58:00.648Z",
+              "apiKeyExpirationDate": "2022-05-26T05:30:18.665Z",
               "description": "api key description"
             }
           },
@@ -50,39 +50,11 @@
         ]
       }
     },
-    "dgm4780next872ea8d5": {
+    "dgm4780nextdcf84b04": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "dgm4780next872ea8d5DefineAuthChallenge",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "dgm4780next872ea8d5CreateAuthChallenge",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "dgm4780next872ea8d5VerifyAuthChallengeResponse",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
-      "customAuth": true,
+      "dependsOn": [],
+      "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
         "usernameAttributes": [
@@ -91,8 +63,7 @@
         "signupAttributes": [
           "EMAIL",
           "FAMILY_NAME",
-          "GIVEN_NAME",
-          "PICTURE"
+          "NAME"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,

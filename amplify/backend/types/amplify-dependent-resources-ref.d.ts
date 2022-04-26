@@ -27,7 +27,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "auth": {
-        "dgm4780next872ea8d5": {
+        "dgm4780nextdcf84b04": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
