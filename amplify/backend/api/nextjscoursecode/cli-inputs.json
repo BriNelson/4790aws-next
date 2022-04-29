@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "nextjscoursecode",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-acc9f76c-aa6d-426e-988b-11465cf551eb/amplify/backend/api/nextjscoursecode/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-af475f53-e9de-47ab-ba21-b0293f30546e/amplify/backend/api/nextjscoursecode/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -12,6 +12,10 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authnextjscoursecodecfffa639"
       }
     ],
     "conflictResolution": {

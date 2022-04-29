@@ -1,4 +1,4 @@
-type MoviesDB @model @auth(rules: [{allow: public}]) {
+type MoviesDB @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
   poster: String
   title: String
