@@ -138,7 +138,7 @@ const test = await watchmodeMovie.json()
       
       <Box sx={{ display: "flex", justifyContent: "center", m: 3 }}>
         
-        <TextField sx={{width: 600, backgroundColor: "white"}}  value={movieInput}
+        <TextField sx={{width: 600}}  value={movieInput}
           onChange={(e) => setMovieInput(e.target.value)} id="filled" label="Search" variant="outlined" />
         <Button variant="contained"  onClick={handleSearch}>Search</Button>
         </Box>
