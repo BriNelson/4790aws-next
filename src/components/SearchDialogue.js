@@ -79,8 +79,8 @@ console.log(sourcesArray)
         <Card sx={{ maxWidth: 500, m: 2, display: 'flex' }}>
           <CardMedia sx={{ maxWidth: 100, display: 'flex' }} component="img" image={movies.image_url} />
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{marginBottom: 'auto'}}>
-              <Typography variant="h5" color="initial">  {movies.name}</Typography>
+          <CardContent sx={{marginBottom: 'auto' }}>
+              <Typography variant="h5">  {movies.name}</Typography>
           </CardContent>
           <CardActions sx={{marginTop: 'auto'}}>
                <Button onClick={() => handleSave(index)}>Save</Button> 
