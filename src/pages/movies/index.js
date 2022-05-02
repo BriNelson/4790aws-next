@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import config from "../../aws-exports"
 import SearchDialogue from '../../components/SearchDialogue';
+import MovieModal from '../../components/MovieModal';
+
 
 import {Amplify, DataStore, AuthModeStrategyType } from "aws-amplify" 
 import { useAuthenticator } from '@aws-amplify/ui-react';
@@ -36,6 +38,16 @@ const MovieList = () => {
     movie: undefined,
     
   });
+  const [movieId, setMovieId] = useState('');
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = (index) => {
+
+    setOpen(true)
+    setMovieId(index)
+    console.log("test")
+  };
+  const handleClose = () => setOpen(false);
+
   const { user } = useAuthenticator((context) => [context.user])
 
   
@@ -153,9 +165,9 @@ const test = await watchmodeMovie.json()
         </Box>
           
       <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
-      {movieList && movieList.map((movies) => (   
+      {movieList && movieList.map((movies, index) => (   
         <Card sx={{ width: 200, m: 2 }}>
-          <CardActionArea>
+          <CardActionArea onClick={() => handleOpen(index)} >
             <CardMedia component="img" title={movies.title} image={movies.poster} />
             
                   
@@ -176,10 +188,12 @@ const test = await watchmodeMovie.json()
             <CardActions >
                            {user.username === movies.owner && (<Button onClick={() => deleteMovie(movies)}>delete</Button>)}
                         </CardActions>
-                      
+                              
         </Card>
+        
         ))}
       </Box>
+      <MovieModal open={open} movieInfo={movieList[movieId]}/>
       <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
     </div>
   );
