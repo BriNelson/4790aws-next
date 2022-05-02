@@ -13,7 +13,14 @@ export declare class MoviesDB {
   readonly poster?: string | null;
   readonly title?: string | null;
   readonly us_rating?: string | null;
-  readonly untitledfield?: string | null;
+  readonly trailer?: string | null;
+  readonly trailer_thumbnail?: string | null;
+  readonly backdrop?: string | null;
+  readonly plot_overview?: string | null;
+  readonly year?: number | null;
+  readonly runtime_minutes?: number | null;
+  readonly sources?: (string | null)[] | null;
+  readonly generes?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<MoviesDB, MoviesDBMetaData>);

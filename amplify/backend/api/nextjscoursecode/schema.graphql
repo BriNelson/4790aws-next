@@ -1,8 +1,15 @@
-type MoviesDB @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
+type MoviesDB @model @auth(rules: [{allow: public}]) {
   id: ID!
   poster: String
   title: String
   us_rating: String
-  untitledfield: String
+  trailer: String
+  trailer_thumbnail: String
+  backdrop: String
+  plot_overview: String
+  year: Int
+  runtime_minutes: Int
+  sources: [String]
+  generes: [String]
 }
  

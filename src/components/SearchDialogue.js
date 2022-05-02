@@ -47,10 +47,9 @@ console.log(sourcesArray)
            trailer: movieInfo.trailer,
            trailer_thumbnail: movieInfo.trailer_thumbnail,
            backdrop: movieInfo.backdrop,
-          plot_overview: movieInfo.plot_overview,
-          year: movieInfo.year,
-          runtime_minutes: movieInfo.runtime_minutes,
-          genre_names: movieInfo.genre_names,
+           plot_overview: movieInfo.plot_overview,
+           year: movieInfo.year,
+           runtime_minutes: movieInfo.runtime_minutes,
           sources: sourcesArray
            
         })

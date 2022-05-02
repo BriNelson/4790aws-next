@@ -31,12 +31,63 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "untitledfield": {
-                    "name": "untitledfield",
+                "trailer": {
+                    "name": "trailer",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "trailer_thumbnail": {
+                    "name": "trailer_thumbnail",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "backdrop": {
+                    "name": "backdrop",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "plot_overview": {
+                    "name": "plot_overview",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "year": {
+                    "name": "year",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "runtime_minutes": {
+                    "name": "runtime_minutes",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "sources": {
+                    "name": "sources",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "generes": {
+                    "name": "generes",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -69,15 +120,6 @@ export const schema = {
                             {
                                 "allow": "public",
                                 "operations": [
-                                    "read"
-                                ]
-                            },
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
-                                "operations": [
                                     "create",
                                     "update",
                                     "delete",
@@ -92,5 +134,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "8ffe06d19360b6a6cdc2a88122f02c5a"
+    "version": "0fedf1157e7649931333daff256b1532"
 };

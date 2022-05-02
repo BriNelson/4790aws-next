@@ -3,15 +3,7 @@
     "nextjscoursecode": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "nextjscoursecodecfffa639",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
@@ -24,12 +16,6 @@
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
-            },
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authnextjscoursecodecfffa639"
-              }
             }
           ]
         }
