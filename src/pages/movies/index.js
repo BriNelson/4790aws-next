@@ -53,21 +53,6 @@ const MovieList = () => {
   
   
   
-  // const handleSearch = async () => {
-  //   if (!movieInput) return
-    
-  //   const watchmodeMovie = await fetch('/api/movieId', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ title: movieInput }),
-  //     headers: {
-  //       'Content-type': 'application/json'
-  //     }
-  //   })
-  // setFetchedMove(await watchmodeMovie.json())
-    
-  //   setDialog({ isOpen: true, movie: movie }),
-  // }
-  
   
   const handleSearch = async () => {
     if (!movieInput) return
@@ -91,31 +76,6 @@ const test = await watchmodeMovie.json()
   } 
 
 
-
-  
-  // const handleSave = async () => {
-  //   try {
-  //     await DataStore.save(
-  //       new MoviesDB({
-  //         title: movie.Title,
-  //         director: movie.Director,
-  //         runtime: movie.Runtime,
-  //         poster: movie.Poster,
-  //         Rating: movie.Rated
-
-  //       }
-  //       )
-
-  //       //55 minutes in 
-  //     )
-  //     console.log("this worked")
-  //   } catch (error) { ("save movie error", err) }
-  //   finally {
-  //     setDialog({ isOpen: false})
-  //   }
-    
-  // }
-
   const deleteMovie = async (movie) => {
     try {
       const movieToDelete = await DataStore.query(MoviesDB, movie.id)
@@ -137,10 +97,10 @@ const test = await watchmodeMovie.json()
     
     try {
       let movieTempList = await DataStore.query(MoviesDB)
-      console.log(movieTempList)
+      
       setMovieList(movieTempList)
 
-      console.log(movieList)
+      
     } catch (error) {
       console.log('fetcher error', error)
       
@@ -172,7 +132,7 @@ const test = await watchmodeMovie.json()
             
                   
           <CardContent>
-            <Typography variant="h5" color="initial">
+            <Typography sx={{ color: "white" }} variant="h6" color="initial">
               {movies.title}
             </Typography>
             <Typography variant="subtitle1" color="initial">
@@ -199,20 +159,6 @@ const test = await watchmodeMovie.json()
   );
 };
 
-// export async function getStaticProps() {
- 
- 
- 
- 
- 
- 
-//   const fetchedMovies = await getMovieByTitle("Speed Racer");
 
-//   return {
-//     props: {
-//       movie: fetchedMovies,
-//     },
-//   };
-// }
 
 export default MovieList;

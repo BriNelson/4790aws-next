@@ -9,7 +9,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -18,8 +18,8 @@ const style = {
 
 const BasicModal = (props) => {
   const { open, movieInfo } = props;
-  console.log(movieInfo)
-
+    
+ 
   return (
       <div>
       
@@ -30,10 +30,10 @@ const BasicModal = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <video width="320" height="240" controls>
-  <source src="https://www.youtube.com/watch?v=V75dMMIW284" type="video/mp4"></source>
-Your browser does not support the video tag.
-</video>
+          <iframe width="420" height="315"
+            src="">
+          </iframe>
+          
         </Box>
       </Modal>
      </div>

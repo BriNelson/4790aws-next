@@ -35,7 +35,7 @@ return await response.json()
 
    const movieInfo = await getMovieById(movie[index].id)
     
-    const sourcesArray = movieInfo.sources.map(test => test.name)
+    const sourcesArray = movieInfo.sources.map(sourceList => sourceList.name)
 console.log(sourcesArray)
     try {
       await DataStore.save(
