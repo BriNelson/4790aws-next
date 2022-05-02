@@ -5,8 +5,12 @@
 * Sign up
 * Log in 
 * Log out
-* delete movies you have Added
-* not delete movies others have added
+* Delete movies you have added
+* Not delete movies others have added
+
+## How does it work?
+[Amplify](http://localhost:3000)
+
 
 
 ### deployed url
