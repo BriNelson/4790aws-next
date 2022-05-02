@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import config from "../../aws-exports"
 import SearchDialogue from '../../components/SearchDialogue';
 
-import Amplify, { DataStore } from "aws-amplify" 
+import {Amplify, DataStore, AuthModeStrategyType } from "aws-amplify" 
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import useSWR from "swr"
 import {MoviesDB} from "../../models"
 
@@ -19,7 +20,12 @@ import {
   Button,
 } from "@mui/material";
 
-Amplify.configure(config)
+Amplify.configure({
+  ...config,
+  DataStore: {
+    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH
+  }
+})
 
 const MovieList = () => {
   const [movieList, setMovieList] = useState({});
@@ -29,7 +35,8 @@ const MovieList = () => {
     isOpen: false,
     movie: undefined,
     
-});
+  });
+  const { user } = useAuthenticator((context) => [context.user])
 
   
   
@@ -115,8 +122,10 @@ const test = await watchmodeMovie.json()
   }
 
   const fetcher = async () => {
+    
     try {
       let movieTempList = await DataStore.query(MoviesDB)
+      console.log(movieTempList)
       setMovieList(movieTempList)
 
       console.log(movieList)
@@ -165,8 +174,7 @@ const test = await watchmodeMovie.json()
               </CardContent>
               </CardActionArea>
             <CardActions >
-                            <Button onClick={() => deleteMovie(movies)}>delete</Button> 
-                            
+                           {user.username === movies.owner && (<Button onClick={() => deleteMovie(movies)}>delete</Button>)}
                         </CardActions>
                       
         </Card>

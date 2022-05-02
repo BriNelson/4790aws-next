@@ -2,5 +2,11 @@
   "AppSyncApiName": "nextjscoursecode",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-05-02T01:23:57.363Z"
+  "AuthModeLastUpdated": "2022-05-02T04:39:09.601Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authnextjscoursecodecfffa639",
+      "Outputs.UserPoolId"
+    ]
+  }
 }
