@@ -9,7 +9,8 @@
 * Not delete movies others have added
 
 ## How does it work?
-[Amplify](http://localhost:3000)
+[Amplify Studio](https://aws.amazon.com/amplify/studio/) controls the back end, handling data modeling, the database, hosting, and authentication.
+[Next.js](https://nextjs.org/) handles front end.
 
 
 
