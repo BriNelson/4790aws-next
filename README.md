@@ -14,7 +14,7 @@
 2. [Line 77](https://github.com/BriNelson/4790aws-next/blob/main/src/components/SearchDialogue.js) maps over retrieved dat from watchmode database
 
 ### Work with the proper libraries to create and manage the NextJS front-end portion of your project using a real development toolset.
-[Line 12](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)  MUI components used through out as example some imported right here
+- [Line 12](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)  MUI components used through out as example some imported right here
 
 ###  Work with Yarn/NPM, Amplify CLI, and Amplify Studio to create and manage the back-end portion of your project.
 [Amplify config folder](https://github.com/BriNelson/4790aws-next/tree/main/amplify)
