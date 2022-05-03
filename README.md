@@ -10,7 +10,7 @@
   
 
 ### Effectively use conditional logic, JavaScript array methods, and front-end framework elements to render large lists on the web client.
-1. [Line 77] (https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)
+1. [Line 77](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)
 
 
 
