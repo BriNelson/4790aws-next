@@ -12,7 +12,7 @@
 ### Effectively use conditional logic, JavaScript array methods, and front-end framework elements to render large lists on the web client.
 1. [Line 128](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js) maps over retrieved data from from AWS database
 2. [Line 77](https://github.com/BriNelson/4790aws-next/blob/main/src/components/SearchDialogue.js) maps over retrieved dat from watchmode database
-3. [Line 149 & 128](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)
+3. [Line 149 & 128](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js) conditionaly rendering a list and the delete button based on auth
 
 ### Work with the proper libraries to create and manage the NextJS front-end portion of your project using a real development toolset.
 - [Line 12](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)  MUI components used through out as example some imported right here
@@ -29,8 +29,8 @@
 
 ### A mix of Page and API routes within your NextJS code
 - [Api route made](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/api/movie.js)
-- [line 59](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js)Api route called 
-- [line 99](https://github.com/BriNelson/4790aws-next/blob/main/src/components/ResponsiveAppBar.js)Page route
+- [line 59](https://github.com/BriNelson/4790aws-next/blob/main/src/pages/movies/index.js) Api route called 
+- [line 99](https://github.com/BriNelson/4790aws-next/blob/main/src/components/ResponsiveAppBar.js) Page route
 
 ###  A simple example of Authorization using Cognito users to conditionally render UI or access a page route.
 - [line 1](https://github.com/BriNelson/4790aws-next/blob/main/amplify/backend/api/nextjscoursecode/schema.graphql) auth guide lines( owner can add and delete others cant )
