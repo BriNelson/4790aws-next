@@ -40,13 +40,18 @@ const MovieList = () => {
   });
   const [movieId, setMovieId] = useState('');
   const [open, setOpen] = React.useState(false);
-  const handleOpen = (index) => {
+  
+  const [moviesProp, setMoviesProp] = useState('');
+  const handleOpen = (index, movies) => {
 
     setOpen(true)
     setMovieId(index)
+    setMoviesProp(movies)
     console.log("test")
+    
   };
   const handleClose = () => setOpen(false);
+  
 
   const { user } = useAuthenticator((context) => [context.user])
 
@@ -127,7 +132,7 @@ const test = await watchmodeMovie.json()
       <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
       {movieList && movieList.map((movies, index) => (   
         <Card sx={{ width: 200, m: 2 }}>
-          <CardActionArea onClick={() => handleOpen(index)} >
+          <CardActionArea onClick={() => handleOpen(index, movies)} >
             <CardMedia component="img" title={movies.title} image={movies.poster} />
             
                   
@@ -153,7 +158,7 @@ const test = await watchmodeMovie.json()
         
         ))}
       </Box>
-      <MovieModal open={open} movieInfo={movieList[movieId]}/>
+      <MovieModal open={open} movieInfo={moviesProp} movieId={movieId} setClose={handleClose}/>
       <SearchDialogue open={dialog.isOpen} movie={fetchedMovie} closeDialog={handleCloseDialog}  />
     </div>
   );

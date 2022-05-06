@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -17,22 +17,37 @@ const style = {
 };
 
 const BasicModal = (props) => {
-  const { open, movieInfo } = props;
-    
- 
+  const { open, movieInfo, movieId, setClose } = props;
+
+  
+  console.log(movieInfo)
+  function handleClose() {
+    setOpen(false);
+  }
+//  let youtube = movieInfo.trailer;
+  
+//  let tokens = youtube.split("=");
+//  console.log(tokens[1]);
+//  let youtubeLink = "https://www.youtube.com/embed/" + tokens[1];
+//   console.log(youtubeLink);
+  
   return (
       <div>
       
       <Modal
         open={open}
-        
+        onClose={setClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <iframe width="420" height="315"
-            src="">
-          </iframe>
+        <img src={movieInfo.backdrop} alt="Girl in a jacket"></img>
+          <h2>{movieInfo.title}</h2>
+          <h5>{movieInfo.us_rating} | {movieInfo.runtime_minutes} | {movieInfo.year} </h5>
+          <p>{movieInfo.plot_overview} </p>
+          
+      
+
           
         </Box>
       </Modal>
